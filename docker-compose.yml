@@ -1,0 +1,20 @@
+version: "2"
+
+services:
+  postgresql:
+    image: postgres:11-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: open-recognition
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=wael.slaam90@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=pgadmin
+    ports:
+      - 8000:80
+    depends_on:
+      - postgresql
