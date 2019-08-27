@@ -12,28 +12,45 @@ class MyProfile extends Component {
       userId: props.userId || Number(props.location.pathname.split("/")[2]),
       userInfo: {},
       userStatements: [],
-      showBtn: false
+      trustedUsersList: [],
+      isItMe: false
     };
   }
 
   componentDidMount = () => {
     this.getUserData();
     this.getUserStatements();
-    console.log(this.state.isExternal);
+    this.getTrustedUsers();
+    this.checkIsItMe();
   };
 
   // Get specific user's info from the server by id
-  getUserData = async id => {
-    const data = await fetch(`/api/users/${this.state.userId}`);
-    const userData = await data.json();
-    this.setState({ userInfo: userData });
+  getUserData = async () => {
+    const response = await fetch(`/api/users/${this.state.userId}`);
+    const data = await response.json();
+    this.setState({ userInfo: data });
   };
 
   // Get all statements of specific user using his Id
   getUserStatements = async () => {
-    const data = await fetch(`/api/users/${this.state.userId}/statements`);
-    const jsonData = await data.json();
-    this.setState({ userStatements: jsonData });
+    const response = await fetch(`/api/users/${this.state.userId}/statements`);
+    const data = await response.json();
+    this.setState({ userStatements: data });
+  };
+
+  //Get trusted users list of a specific user
+  getTrustedUsers = async () => {
+    const response = await fetch(
+      `/api/users/${this.state.userId}/trustedUsers`
+    );
+    const data = await response.json();
+    this.setState({ trustedUsersList: data });
+  };
+
+  checkIsItMe = () => {
+    if (Number(localStorage.getItem("id")) === this.state.userId) {
+      this.setState({ isItMe: true });
+    }
   };
 
   render() {
@@ -42,10 +59,15 @@ class MyProfile extends Component {
     return (
       <div className="myProfile">
         <Header />
-        <Badge userInfo={this.state.userInfo}
-               showBtn={false} />
-        <StatementList userId={this.state.userId} userStatements={this.state.userStatements} userInfo={this.state.userInfo} />
-        {!isExternal && <LinkGenerator userId={this.state.userId} />}
+        <Badge userInfo={this.state.userInfo} showBtn={false} />
+        <StatementList
+          userStatements={this.state.userStatements}
+          trustedUsersList={this.state.trustedUsersList}
+          userInfo={this.state.userInfo}
+        />
+        {!isExternal && this.state.isItMe && (
+          <LinkGenerator userId={this.state.userId} />
+        )}
         <Footer />
       </div>
     );

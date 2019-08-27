@@ -18,12 +18,11 @@ const createTable = () => {
       profession TEXT NOT NULL,
       address TEXT NOT NULL
     ); 
-
 `);
   console.log("user table is created");
 };
 
-const createRow = async data => {
+const createRow = async data =>
   (await database.query(SQL`
   INSERT INTO
     users 
@@ -50,15 +49,6 @@ const createRow = async data => {
     )
     RETURNING 
       *;`))[0];
-};
-
-const getRows = async () =>
-  await database.query(`
-  SELECT
-    *
-  FROM
-    users;
-`);
 
 const getRow = async id =>
   (await database.query(SQL`
@@ -70,6 +60,33 @@ const getRow = async id =>
     id = ${id};
 `))[0] || null;
 
+const getRows = async () =>
+  await database.query(`
+  SELECT
+    *
+  FROM
+    users;
+`);
+
+const deleteRow = id =>
+  database.query(SQL`
+  DELETE FROM
+    users
+  WHERE
+    id = ${id};
+`);
+
+const checkRowExitence = async (username, password) =>
+  (await database.query(SQL`
+  SELECT
+    *
+  FROM
+    users
+  WHERE
+  login = ${username} AND password = ${password};
+`))[0] || null;
+
+//not used
 const updateRow = async (id, data) =>
   (await database.query(SQL`
   UPDATE
@@ -89,19 +106,12 @@ const updateRow = async (id, data) =>
     *;
 `))[0] || null;
 
-const deleteRow = id =>
-  database.query(SQL`
-  DELETE FROM
-    users
-  WHERE
-    id = ${id};
-`);
-
 module.exports = {
   createTable,
   createRow,
   getRows,
   getRow,
   updateRow,
-  deleteRow
+  deleteRow,
+  checkRowExitence
 };

@@ -10,7 +10,6 @@ const statementRouter = express.Router();
 // Create a statement
 statementRouter.post("/", async (req, res, next) => {
   const data = req.body;
-  console.log(data);
   try {
     const statement = await statementsTable.createRow(data);
     return res.json(statement);

@@ -1,36 +1,27 @@
-import React, { Component } from "react";
+import React from "react";
 
-class TrustBtn extends Component {
-  state = {};
-
-  handleTrust = () => {
-    this.props.establishTrustRelation(
-      this.props.fromUserId,
-      this.props.toUserId
-    );
-  };
-
-  handleBreak = () => {
-    this.props.breakTrustRelation(this.props.fromUserId, this.props.toUserId);
-  };
-
-  turstedView = () => {
+function TrustBtn(props) {
+  if (props.isTrusted) {
     return (
-    <button onClick={this.handleBreak} className="btn aqua-gradient">Break Trust</button>
+      <button
+        onClick={() => props.breakTrustRelation()}
+        className="btn aqua-gradient"
+      >
+        Break Trust
+      </button>
     );
-  };
-
-  defaultView = () => {
-    console.log();
+  } else {
     return (
       <div className="p-2 bd-highlight">
-        <button type="button" onClick={this.handleTrust} className="btn aqua-gradient">Trust!</button>
+        <button
+          type="button"
+          onClick={() => props.establishTrustRelation()}
+          className="btn aqua-gradient"
+        >
+          Trust!
+        </button>
       </div>
     );
-  };
-
-  render() {
-    return this.props.isTrusted ? this.turstedView() : this.defaultView();
   }
 }
 

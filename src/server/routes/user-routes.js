@@ -10,21 +10,20 @@ const trustRelationTable = require("../../database/tables/trust-relation-table")
 const userRouter = express.Router();
 
 // Get all users
-userRouter.get("/", async (req, res, next) => {
-  try {
-    const users = await userTable.getRows();
-    return res.json(users);
-  } catch (err) {
-    return next(err);
-  }
-});
+// userRouter.get("/", async (req, res, next) => {
+//   try {
+//     const users = await userTable.getRows();
+//     return res.json(users);
+//   } catch (err) {
+//     return next(err);
+//   }
+// });
 
 // Create a user
 userRouter.post("/", async (req, res, next) => {
   const data = req.body;
   try {
     const user = await userTable.createRow(data);
-    console.log("232323232", user);
     return res.send(user);
   } catch (err) {
     return next(err);
@@ -82,6 +81,22 @@ userRouter.get("/:id/trustedUsers", async (req, res, next) => {
   try {
     const trustedUsers = await trustRelationTable.getTrustedUsers(id);
     return res.json(trustedUsers);
+  } catch (err) {
+    return next(err);
+  }
+});
+
+// Check existance user's account
+userRouter.get("/", async (req, res, next) => {
+  const username = req.query.username;
+  const password = req.query.password;
+  try {
+    const user = await userTable.checkRowExitence(username, password);
+    if (user !== null) {
+      return res.status(200).json(user);
+    } else {
+      return res.status(404).send("Not found..");
+    }
   } catch (err) {
     return next(err);
   }

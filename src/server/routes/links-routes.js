@@ -23,7 +23,6 @@ linkRouter.post("/", async (req, res, next) => {
   const data = req.body;
   try {
     const link = await linkTable.createRow(data);
-    console.log("create link ", link);
     return res.send(link);
   } catch (err) {
     return next(err);

@@ -77,9 +77,7 @@ const checkRowExitence = async (fromUserId, toUserId) =>
 const getTrustedUsers = async toUserId =>
   database.query(SQL`
   SELECT * FROM users WHERE id IN
-  (SELECT from_user_id as temp2 FROM trust_relation WHERE to_user_id=${toUserId} 
-  UNION
-  SELECT to_user_id FROM trust_relation WHERE from_user_id=${toUserId});
+  (SELECT from_user_id as temp2 FROM trust_relation WHERE to_user_id=${toUserId});
 `);
 
 module.exports = {

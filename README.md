@@ -1,3 +1,3 @@
-# osoc19-open-recognition
+# osoc19-open-recognition-starter
 
-Completed project of Open Recognition web app
+starter code for your OSOC project. have at it!

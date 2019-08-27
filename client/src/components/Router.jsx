@@ -1,11 +1,10 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import App from "../App";
 import MyProfile from "./MyProfile";
 import UserProfile from "./UserProfile";
-//import ExternalUserForm from "./ExternalUserForm";
-import PeopleTrustedUser from "./PeopleTrustedUser";
 import Exteranl from "./External";
+import SignInForm from "./SignInForm";
+import App from "../App";
 
 const Router = () => {
   return (
@@ -15,8 +14,7 @@ const Router = () => {
         <Route path="/myProfile/:id" component={MyProfile} />
         <Route path="/userProfile/:id" component={UserProfile} />
         <Route path="/userProfileForExternal/:link" component={Exteranl} />
-
-        {/* <Route path="/external/:link" component={externalStatementForm} /> */}
+        <Route path="/sign-in" component={SignInForm} />
       </Switch>
     </BrowserRouter>
   );

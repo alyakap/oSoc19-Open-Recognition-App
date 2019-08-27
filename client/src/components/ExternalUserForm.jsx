@@ -12,21 +12,30 @@ class ExternalUserForm extends Component {
       photo: "",
       trustStatement: "",
       externalUserInfo: {},
-      isFinished: false,
-      after5sec: false
+      isFormSubmitted: false,
+      afterFewSec: false
     };
   }
 
+  handleChange = e => {
+    let target = e.target;
+    let value = target.value;
+    let name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  };
+
   handleSubmit = e => {
+    e.preventDefault();
     this.addExternalUser();
     setTimeout(() => {
       this.addExternalStatement();
     }, 1000);
-    e.preventDefault();
-    this.setState({ isFinished: true });
+    this.setState({ isFormSubmitted: true });
     setTimeout(() => {
-      this.changeAfter5second();
-      console.log("aftr5sec changes");
+      this.changeAfterFewSeconds();
     }, 4000);
   };
 
@@ -45,13 +54,11 @@ class ExternalUserForm extends Component {
     });
     const externalUserInfo = await response.json();
     this.setState({ externalUserInfo });
-    console.log(this.state.externalUserInfo);
   };
 
   // add new statement into statements table
   addExternalStatement = async () => {
-    // eslint-disable-next-line
-    const response = await fetch("/api/statements", { 
+    await fetch("/api/statements", {
       method: "POST",
       body: JSON.stringify({
         text: this.state.trustStatement,
@@ -69,26 +76,31 @@ class ExternalUserForm extends Component {
     return <MyProfile userId={this.props.toUserInfo.id} isExternal={true} />;
   };
 
-  changeAfter5second = () => {
-    this.setState({ after5sec: true });
+  changeAfterFewSeconds = () => {
+    this.setState({ afterFewSec: true });
     this.viewFinishedView();
   };
 
   viewThanksMessage = () => {
     return (
-      <header style={{height: '100px;'}} className="jumbotron">
+      <header style={{ height: "100px;" }} className="jumbotron">
         <div className="container">
           <div className="row justify-content-md-center">
-              <div className="col-md-10">
-                  <h1 className="display-4">Thank you {`${this.state.firstName}`} </h1>
-                  <p className="lead">You just made a comrubition to the profile. Well done! You will be directed to the profile you just contrubitured...</p>
-                  <hr className="my-4"/>
-                  <div className="text-center">
-                    <div className="spinner-border text-success" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                  </div>
+            <div className="col-md-10">
+              <h1 className="display-4">
+                Thank you {`${this.state.firstName}`}{" "}
+              </h1>
+              <p className="lead">
+                You just made a comrubition to the profile. Well done! You will
+                be directed to the profile you just contrubitured...
+              </p>
+              <hr className="my-4" />
+              <div className="text-center">
+                <div className="spinner-border text-success" role="status">
+                  <span className="sr-only">Loading...</span>
+                </div>
               </div>
+            </div>
           </div>
         </div>
       </header>
@@ -96,76 +108,98 @@ class ExternalUserForm extends Component {
   };
 
   viewFinishedView = () => {
-    return this.state.after5sec
+    return this.state.afterFewSec
       ? this.viewUserProfile()
       : this.viewThanksMessage();
   };
 
-  handleInputFirstName = e => {
-    this.setState({ firstName: e.target.value });
-    console.log("firstName", this.state.firstName);
-  };
-
-  handleInputLastName = e => {
-    this.setState({ lastName: e.target.value });
-    console.log("lastName", this.state.lastName);
-  };
-
-  handleInputEmail = e => {
-    this.setState({ email: e.target.value });
-    console.log("email", this.state.email);
-  };
-
-  handleInputProfession = e => {
-    this.setState({ profession: e.target.value });
-    console.log("profession", this.state.profession);
-  };
-
-  handleInputPhoto = e => {
-    this.setState({ photo: e.target.value });
-    console.log("photo", this.state.photo);
-  };
-
-  handleInputStatement = e => {
-    this.setState({ trustStatement: e.target.value });
-    console.log("statement", this.state.trustStatement);
-  };
-
   viewDefualtView = () => {
     return (
-      <div className="jumbotron text-center blue-grey lighten-5">  
+      <div className="jumbotron text-center blue-grey lighten-5">
         <div className="row d-flex justify-content-center">
           <div className="col-md-10">
-            <form className="text-center border border-success p-5" onSubmit={this.handleSubmit}>
-                <h4 className="font-weight-bold">You're about to add a statement on  someone's profile...</h4><br />
-                <div className="form-row mb-4">
-                  <div className="col">
-                    <input type="text" id="defaultRegisterFormFirstName" className="form-control" placeholder="First name" onChange={this.handleInputFirstName} />
-                  </div>
-                  <div className="col">
-                    <input type="text" id="defaultRegisterFormLastName" className="form-control" placeholder="Last name" onChange={this.handleInputLastName} />
-                  </div>
+            <form
+              className="text-center border border-success p-5"
+              onSubmit={this.handleSubmit}
+            >
+              <h4 className="font-weight-bold">
+                You're about to add a statement on someone's profile...
+              </h4>
+              <br />
+              <div className="form-row mb-4">
+                <div className="col">
+                  <input
+                    type="text"
+                    id="defaultRegisterFormFirstName"
+                    className="form-control"
+                    placeholder="First name"
+                    name="firstName"
+                    onChange={this.handleChange}
+                  />
                 </div>
-                    <input type="email" id="emailEnter" className="form-control" placeholder="Your e-mail address" aria-describedby="Email address" onChange={this.handleInputEmail} />
-                    <br />
-                    <input type="text" id="professionText" className="form-control" placeholder="Your profession" aria-describedby="Profession" onChange={this.handleInputProfession} />
-                  <br />
-                    <input type="text" className="form-control" id="textForPhoto" aria-describedby="Picture" placeholder="Upload your picture" onChange={this.handleInputPhoto} />
-                  <div className="form-group">
-                    <hr />
-                    <p className="text-left">Enter your statement:</p>
-                    <textarea className="form-control" id="statementTextArea" rows="3" onChange={this.handleInputStatement}></textarea>
-                  </div>
-                 <button className="btn blue-gradient btn-rounded">Submit <i className="far fa-gem ml-1"></i></button>
-              </form>
-            </div>
+                <div className="col">
+                  <input
+                    type="text"
+                    id="defaultRegisterFormLastName"
+                    className="form-control"
+                    placeholder="Last name"
+                    name="lastName"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <input
+                type="email"
+                id="emailEnter"
+                className="form-control"
+                placeholder="Your e-mail address"
+                aria-describedby="Email address"
+                name="email"
+                onChange={this.handleChange}
+              />
+              <br />
+              <input
+                type="text"
+                id="professionText"
+                className="form-control"
+                placeholder="Your profession"
+                aria-describedby="Profession"
+                name="profession"
+                onChange={this.handleChange}
+              />
+              <br />
+              <input
+                type="text"
+                className="form-control"
+                id="textForPhoto"
+                aria-describedby="Picture"
+                name="photo"
+                placeholder="Upload your picture"
+                onChange={this.handleChange}
+              />
+              <div className="form-group">
+                <hr />
+                <p className="text-left">Enter your statement:</p>
+                <textarea
+                  className="form-control"
+                  id="statementTextArea"
+                  rows="3"
+                  name="trustStatement"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <button className="btn blue-gradient btn-rounded">
+                Submit <i className="far fa-gem ml-1" />
+              </button>
+            </form>
           </div>
         </div>
+      </div>
     );
   };
 
   render() {
-    return this.state.isFinished
+    return this.state.isFormSubmitted
       ? this.viewFinishedView()
       : this.viewDefualtView();
   }
