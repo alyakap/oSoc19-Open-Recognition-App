@@ -5,7 +5,7 @@ Being expat, immigrant, student or refugee is quite troublesome especially when 
 
 Open Recognition is **social network** that helps newcomers to get recognition that they need to be part of community. The purpose of the app is helping users to collect trust statements, endorsements from other people. 
 
-Open Recognition is **open-source** project that was being one of the projects in [Open Summer of Code](https://2019.summerofcode.be/2019/open-recognition) which is a 4-week summer programme in July. The goal: provide network and support necessary to transform open source/innovation projects into powerful real-world services.
+Open Recognition is **open-source** project that was one of the projects in [Open Summer of Code](https://2019.summerofcode.be/2019/open-recognition) which is a 4-week summer programme in July. The goal: provide network and support necessary to transform open source/innovation projects into powerful real-world services.
 
 <img src="assets/images/open-trust.gif" alt="Open Recognition gif" />
 
