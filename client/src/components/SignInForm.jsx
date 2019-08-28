@@ -59,57 +59,58 @@ class SignInForm extends Component {
   render() {
     return (
       <>
-          <h5 class="card-header default-color white-text text-center py-4">
-            <strong>
-                <span className="font-weight-bold text-white">Sign In</span>
-            </strong>
-          </h5>
+        <h5 class="card-header default-color white-text text-center py-4">
+          <strong>
+              <span className="font-weight-bold text-white">Sign In</span>
+          </strong>
+        </h5>
 
-          <div class="card-body px-lg-5 pt-0">
-            <form class="text-center" style={{color: "#757575"}} onSubmit={this.handleSubmit}>
-              <div>
-                {this.state.isNotFalied && (
-                  <p style={{ color: "red" }}>
-                    Your username or your password is Not valid..
-                  </p>
-                )}
-              </div>
-
-              <div class="md-form">
-                <input 
-                  id="materialLoginFormUsername" 
-                  class="form-control"
-                  type="text"
-                  value={this.state.username}
-                  name="username"
-                  placeholder="Username"
-                  onChange={this.handleChange} />
-              </div>
-
-              <div class="md-form">
-                <input 
-                  type="password" 
-                  id="materialLoginFormPassword" 
-                  class="form-control" 
-                  placeholder="Password"
-                  value={this.state.password}
-                  name="password"
-                  onChange={this.handleChange}/>
-              </div>
-
-              <div>
-                <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" disabled={!this.validateTheForm()}>Sign in</button>
-                <p>Not a member?</p>
-                <Link to="/" onClick={() => this.props.switchMode(true)}>
-                  Create an account
-                </Link>
-              </div>
-            </form>
+        <div class="card-body px-lg-5 pt-0">
+          <form class="text-center" style={{color: "#757575"}} onSubmit={this.handleSubmit}>
+            <div>
+              {this.state.isNotFalied && (
+                <p style={{ color: "red" }}>
+                  Your username or your password is Not valid..
+                </p>
+              )}
             </div>
-            <div>{' '}<br /></div>
-            <div>{' '}<br /></div>
-            <div>{' '}<br /></div>
-            
+
+            <div class="md-form">
+              <input 
+                id="materialLoginFormUsername" 
+                class="form-control"
+                type="text"
+                value={this.state.username}
+                name="username"
+                placeholder="Username"
+                onChange={this.handleChange} />
+            </div>
+
+            <div class="md-form">
+              <input 
+                type="password" 
+                id="materialLoginFormPassword" 
+                class="form-control" 
+                placeholder="Password"
+                value={this.state.password}
+                name="password"
+                onChange={this.handleChange}/>
+            </div>
+
+            <div>
+              <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" disabled={!this.validateTheForm()}>Sign in</button>
+              <p>Not a member?</p>
+              <Link to="/" onClick={() => this.props.switchMode(true)}>
+                Create an account
+              </Link>
+            </div>
+          </form>
+          </div>
+          
+          <div>{' '}<br /></div>
+          <div>{' '}<br /></div>
+          <div>{' '}<br /></div>
+          
         </>
     );
   }
