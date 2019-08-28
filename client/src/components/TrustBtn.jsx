@@ -13,12 +13,8 @@ function TrustBtn(props) {
   } else {
     return (
       <div className="p-2 bd-highlight">
-        <button
-          type="button"
-          onClick={() => props.establishTrustRelation()}
-          className="btn aqua-gradient"
-        >
-          Trust!
+        <button type="button" onClick={() => props.establishTrustRelation()} className="btn aqua-gradient">
+          Trust
         </button>
       </div>
     );
