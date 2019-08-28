@@ -17,18 +17,10 @@ class Registeration extends Component {
 
   render() {
     return (
-      <div>
-        <div style={{ textAlign: "center" }}>
-          <NavLink to="/" onClick={() => this.switechSignInAndUpForms(false)}>
-            Sign In
-          </NavLink>
-          <NavLink to="/" onClick={() => this.switechSignInAndUpForms(true)}>
-            Sign Up
-          </NavLink>
-        </div>
+      <div class="card">
         {this.state.isSginUp && (
           <SignUpForm switchMode={this.switechSignInAndUpForms} />
-        )}
+            )}
         {!this.state.isSginUp && (
           <SignInForm switchMode={this.switechSignInAndUpForms} />
         )}

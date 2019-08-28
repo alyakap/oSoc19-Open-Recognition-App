@@ -3,9 +3,9 @@ import { Link, withRouter } from "react-router-dom";
 
 function SignOut() {
   return (
-    <div>
+    <div className="text-white">
       <Link to="/" onClick={() => localStorage.clear()}>
-        SignOut
+        <span className="font-weight-bold text-white">Sign out</span>
       </Link>
     </div>
   );

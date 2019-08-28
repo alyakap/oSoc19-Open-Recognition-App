@@ -15,7 +15,7 @@ class Header extends Component {
       <header>
         <nav className="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar aqua-gradient">
           <div className="container">
-            <a className="navbar-brand" href={`www.google.com`}>
+            <a className="navbar-brand" href={`/`}>
               <img src={logo} alt="Open Recognition Logo" className="logo_on" />
             </a>
             <button
@@ -37,21 +37,14 @@ class Header extends Component {
                 <li className="nav-item" />
                 <li className="nav-item" />
               </ul>
-              <form className="form-inline">
-                <div className="md-form my-0">
-                  <input
-                    className="form-control mr-sm-2"
-                    type="text"
-                    placeholder="Search"
-                    aria-label="Search"
-                  />
-                </div>
-              </form>
+              
               {this.state.pathname !== "/" && (
                 <div>
                   <SignOut />
                 </div>
               )}
+              
+              
             </div>
           </div>
         </nav>

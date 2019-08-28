@@ -55,89 +55,63 @@ class SignUpForm extends Component {
 
   render() {
     return (
-      <div style={{ textAlign: "center" }}>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>First Name:</label>
-            <input
-              type="text"
-              placeholder="Enter your first name @Example Jhon"
-              name="firstName"
-              onChange={this.handleChange}
-            />
+      <>
+      <h5 class="card-header default-color white-text text-center py-4">
+            <strong>
+                <span className="font-weight-bold text-white">Sign Up</span>
+            </strong>
+      </h5>
+      <div class="card-body px-lg-5 pt-0">
+        <form class="text-center" style={{color: "#757575"}} onSubmit={this.handleSubmit}>
+
+          <div class="form-row">
+              <div class="col">
+                <div class="md-form">
+                    <input type="text" placeholder="First Name" class="form-control" onChange={this.handleChange} />
+                </div>
+              </div>
+              <div class="col">
+                <div class="md-form">
+                    <input type="text" placeholder="Last Name" class="form-control" onChange={this.handleChange} />
+                </div>
+              </div>
           </div>
-          <div>
-            <label>Last Name:</label>
-            <input
-              type="text"
-              placeholder="Enter your last name @Example Doe"
-              name="lastName"
-              onChange={this.handleChange}
-            />
+
+          <div class="md-form mt-0">
+              <input type="text" placeholder="Profession"  class="form-control" name="profession" onChange={this.handleChange} />
           </div>
-          <div>
-            <label>Profile Picture:</label>
-            <input
-              type="text"
-              placeholder="Enter your photo's link"
-              name="photo"
-              onChange={this.handleChange}
-            />
+
+          <div class="md-form mt-0">
+              <input type="email" placeholder="E-mail Address" class="form-control" name="email"
+              onChange={this.handleChange} />
           </div>
-          <div>
-            <label>E-Mail Address:</label>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              name="email"
-              onChange={this.handleChange}
-            />
+
+          <div class="md-form mt-0">
+              <input type="text" placeholder="Profile Image Link"  class="form-control" name="photo" onChange={this.handleChange} />
           </div>
-          <div>
-            <label>Username:</label>
-            <input
-              type="text"
-              placeholder="Enter your username @Example Jhon Doe"
-              name="login"
-              onChange={this.handleChange}
-            />
+
+          <div class="md-form mt-0">
+              <input type="text" placeholder="Address"  class="form-control" name="address" onChange={this.handleChange} />
           </div>
-          <div>
-            <label>Password:</label>
-            <input
-              type="password"
-              placeholder="Enter your password"
-              name="password"
-              onChange={this.handleChange}
-            />
+
+          <div class="md-form mt-0">
+              <input type="text" placeholder="Username"  class="form-control" name="login" onChange={this.handleChange} />
           </div>
-          <div>
-            <label>Profession:</label>
-            <input
-              type="text"
-              placeholder="Enter your profession @Example Web Developer"
-              name="profession"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div>
-            <label>Address:</label>
-            <input
-              type="text"
-              placeholder="Enter your address"
-              name="address"
-              onChange={this.handleChange}
-            />
+
+          <div class="md-form mt-0">
+              <input type="password" placeholder="Password" class="form-control" name="password" onChange={this.handleChange} />
           </div>
 
           <div>
-            <button disabled={!this.validateTheForm()}>Sign Up</button>
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" disabled={!this.validateTheForm()}>Sign Up</button>
             <Link to="/" onClick={() => this.props.switchMode(false)}>
               I'm already member
             </Link>
           </div>
+          
         </form>
       </div>
+      </>
     );
   }
 }
