@@ -32,8 +32,7 @@ class AddStatementItem extends Component {
                     className="form-control"
                     id="exampleFormControlTextarea1"
                     rows="5"
-                    placeholder="Enter your statement"
-                  />
+                    placeholder="Enter your statement"/>
                 </div>
                 <button type="submit" className="btn btn-primary">
                   Submit Statement
