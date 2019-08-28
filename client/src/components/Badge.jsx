@@ -43,8 +43,7 @@ const Badge = props => {
                       <TrustBtn
                         establishTrustRelation={establishTrustRelation}
                         breakTrustRelation={breakTrustRelation}
-                        isTrusted={isTrusted}
-                      />
+                        isTrusted={isTrusted}/>
                     )}
                   </div>
                   <div className="col-sm">
