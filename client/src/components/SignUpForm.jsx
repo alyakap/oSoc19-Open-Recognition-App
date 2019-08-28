@@ -61,7 +61,9 @@ class SignUpForm extends Component {
                 <span className="font-weight-bold text-white">Sign Up</span>
             </strong>
       </h5>
+      
       <div class="card-body px-lg-5 pt-0">
+
         <form class="text-center" style={{color: "#757575"}} onSubmit={this.handleSubmit}>
 
           <div class="form-row">
