@@ -6,17 +6,15 @@ import Registeration from "../../client/src/components/Registreation";
 
 function App() {
   return (
-    <>
-      <Header />
-      <div
-        className="App"
-        style={{
+    <div  style={{
           backgroundImage: "url(" + BgImgae + ")",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
+          backgroundSize: "100% auto",
           backgroundPosition: "center"
-        }}
-      >
+    }}>
+      <Header />
+      <div
+        className="App">
         <div style={{ height: "60px" }} />
         <div className="mask rgba-gradient d-flex justify-content-center align-items-center">
           <div className="container">
@@ -51,7 +49,7 @@ function App() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -5,7 +5,7 @@ html,
     body,
     .jarallax {
       font-family: 'Roboto', sans-serif;
-      height: 230px;
+      height: 100%;
     }
     header {
       height: 70px;

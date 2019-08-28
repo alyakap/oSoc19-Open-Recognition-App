@@ -107,10 +107,6 @@ class SignInForm extends Component {
           </form>
           </div>
 
-          <div>{' '}<br /></div>
-          <div>{' '}<br /></div>
-          <div>{' '}<br /></div>
-          <div>{' '}<br /></div>
         </>
     );
   }
