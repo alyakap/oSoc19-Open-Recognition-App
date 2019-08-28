@@ -61,9 +61,7 @@ const Badge = props => {
                         userInfo.last_name
                       }`}</strong>
                     </h3>
-                    <h6 className="font-weight-bold teal-text mb-4">{`${
-                      userInfo.profession
-                    }`}</h6>
+                    <h6 className="font-weight-bold teal-text mb-4">{`${userInfo.profession}`}</h6>
                   </div>
                   <div className="col-sm" />
                 </div>
