@@ -41,9 +41,7 @@ class StatementItem extends Component {
               alt="Generic placeholder"
             />
             <div className="media-body">
-              <h5 className="font-weight-bold">{`${publisher.first_name} ${
-                publisher.last_name
-              }`}</h5>
+              <h5 className="font-weight-bold">{`${publisher.first_name} ${publisher.last_name}`}</h5>
               <h6 className="font-weight-bold teal-text">
                 {publisher.profession}
               </h6>
