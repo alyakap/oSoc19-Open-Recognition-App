@@ -59,12 +59,14 @@ class MyProfile extends Component {
     return (
       <div className="myProfile">
         <Header />
+        
         <Badge userInfo={this.state.userInfo} showBtn={false} />
+
         <StatementList
           userStatements={this.state.userStatements}
           trustedUsersList={this.state.trustedUsersList}
-          userInfo={this.state.userInfo}
-        />
+          userInfo={this.state.userInfo} />
+
         {!isExternal && this.state.isItMe && (
           <LinkGenerator userId={this.state.userId} />
         )}
