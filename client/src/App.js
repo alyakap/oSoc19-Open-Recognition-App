@@ -1,20 +1,21 @@
 import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import BgImgae from "../../client/src/img/bg-img.jpg";
+import BgImgae from "../../client/src/img/bg-img.png";
 import Registeration from "../../client/src/components/Registreation";
 
 function App() {
   return (
-    <div  style={{
-          backgroundImage: "url(" + BgImgae + ")",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center"
-    }}>
+    <>
       <Header />
-      <div
-        className="App">
+      <div className="App"
+          style={{
+            backgroundImage: "url(" + BgImgae + ")",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+        }}
+      >
         <div style={{ height: "60px" }} />
         <div className="mask rgba-gradient d-flex justify-content-center align-items-center">
           <div className="container">
@@ -42,14 +43,24 @@ function App() {
                   <div>
                     <Registeration />
                   </div>
+                  
                 </div>
               </div>
             </div>
+            <div>{' '}<br /></div>
+            <div>{' '}<br /></div>
+            <div>{' '}<br /></div>
+            <div>{' '}<br /></div>
+            <div>{' '}<br /></div>
+            <div>{' '}<br /></div>
+            <div>{' '}<br /></div>
+            
           </div>
         </div>
       </div>
+      
       <Footer />
-    </div>
+    </>
   );
 }
 

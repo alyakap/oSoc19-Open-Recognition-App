@@ -24,7 +24,10 @@ class AddStatementItem extends Component {
         <div className="card card-image">
           <div className="text-white text-center d-flex align-items-center rgba-teal-strong py-5 px-4">
             <div className="container">
-              <form className="text-center border border-light p-5" onSubmit={this.handleSubmit}>
+              <form
+                className="text-center border border-light p-5"
+                onSubmit={this.handleSubmit}
+              >
                 <div className="form-group">
                   <textarea
                     value={this.state.statement}
@@ -32,7 +35,8 @@ class AddStatementItem extends Component {
                     className="form-control"
                     id="exampleFormControlTextarea1"
                     rows="5"
-                    placeholder="Enter your statement"/>
+                    placeholder="Enter your statement"
+                  />
                 </div>
                 <button type="submit" className="btn btn-primary">
                   Submit Statement

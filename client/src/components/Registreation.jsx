@@ -16,17 +16,17 @@ class Registeration extends Component {
 
   render() {
     return (
+      <>
       <div class="card">
-
         {this.state.isSginUp && (
           <SignUpForm switchMode={this.switechSignInAndUpForms} />
             )}
-
         {!this.state.isSginUp && (
           <SignInForm switchMode={this.switechSignInAndUpForms} />
         )}
-        
       </div>
+      
+      </>
     );
   }
 }
