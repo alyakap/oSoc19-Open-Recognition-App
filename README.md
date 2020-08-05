@@ -11,7 +11,7 @@ Open Recognition is **open-source** project that was one of the projects in [Ope
 
 ## Technologies
 For this project the following technologies were used:
-- HTML, CSS, Bootsrap and React for front-end
+- HTML, CSS, Bootstrap and React for front-end
 - NodeJs for back-end
 - PostgreSQL for database
 
