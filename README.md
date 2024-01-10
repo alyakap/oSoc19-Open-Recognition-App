@@ -57,5 +57,5 @@ This project is licensed under the MIT [License](LICENSE).
 
 ## Authors
 
-- [Hanim Kapusuz](https://github.com/ZHanimK) Front-end Developer
+- [Alya K](https://github.com/alyakap) Front-end Developer
 - [Wael Fato](https://github.com/waelslaam) Back-end Developer
